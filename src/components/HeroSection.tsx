@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Terminal, Copy, Check, Activity, Shield, Cpu } from "lucide-react";
+import { Terminal, Copy, Check } from "lucide-react";
 
 export function HeroSection() {
   const [copied, setCopied] = useState(false);
