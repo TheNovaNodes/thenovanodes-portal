@@ -39,20 +39,20 @@ export function TopNav() {
 
   return (
     <header className="bg-white/90 dark:bg-[#0b0f19]/85 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 dark:border-[#3a494b]/30 transition-colors duration-200">
-      <div className="flex justify-between items-center w-full px-6 md:px-12 max-w-[1440px] mx-auto h-16">
+      <div className="flex justify-between items-center w-full px-4 sm:px-6 md:px-12 max-w-[1440px] mx-auto h-16">
         {/* Brand & Status Pill */}
-        <div className="flex items-center space-x-4">
-          <a href="#" className="flex items-center space-x-2.5 group">
-            <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-[#1c1f2a] border border-slate-300 dark:border-[#3a494b]/50 flex items-center justify-center text-[#008ba3] dark:text-[#00f2fe] group-hover:border-[#00f2fe]/80 transition-colors shadow-[0_0_12px_rgba(0,242,254,0.2)]">
-              <Network className="w-4 h-4 text-[#008ba3] dark:text-[#00f2fe]" />
+        <div className="flex items-center space-x-3 sm:space-x-4">
+          <a href="#" className="flex items-center space-x-2 group">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-100 dark:bg-[#1c1f2a] border border-slate-300 dark:border-[#3a494b]/50 flex items-center justify-center text-[#008ba3] dark:text-[#00f2fe] group-hover:border-[#00f2fe]/80 transition-colors shadow-[0_0_12px_rgba(0,242,254,0.2)] shrink-0">
+              <Network className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#008ba3] dark:text-[#00f2fe]" />
             </div>
-            <span className="text-lg font-semibold tracking-tight text-slate-900 dark:text-[#e0fdff]">
+            <span className="text-base sm:text-lg font-semibold tracking-tight text-slate-900 dark:text-[#e0fdff]">
               TheNovaNodes
             </span>
           </a>
 
           {/* Pulse Badge */}
-          <div className="hidden sm:flex items-center space-x-2 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-[#1c1f2a]/80 border border-slate-300 dark:border-[#3a494b]/40">
+          <div className="hidden md:flex items-center space-x-2 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-[#1c1f2a]/80 border border-slate-300 dark:border-[#3a494b]/40">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10b981]" />
@@ -63,8 +63,8 @@ export function TopNav() {
           </div>
         </div>
 
-        {/* Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-8 text-sm">
+        {/* Navigation Links (Desktop) */}
+        <nav className="hidden lg:flex items-center space-x-8 text-sm">
           <a
             href="#modules"
             className="text-[#008ba3] dark:text-[#00f2fe] border-b-2 border-[#008ba3] dark:border-[#00f2fe] pb-1 font-medium transition-colors"
@@ -94,13 +94,13 @@ export function TopNav() {
         </nav>
 
         {/* Trailing Controls: Language, Theme, Deploy */}
-        <div className="flex items-center space-x-2.5 sm:space-x-3">
+        <div className="flex items-center space-x-1.5 sm:space-x-3">
           {/* Language Switcher */}
           <button
             type="button"
             onClick={toggleLanguage}
             title={t.nav.toggleLanguage}
-            className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-[#3a494b]/50 text-slate-700 dark:text-[#b9cacb] hover:text-slate-900 dark:hover:text-[#e0fdff] hover:border-[#00f2fe]/60 bg-slate-50 dark:bg-[#1c1f2a]/60 transition-colors text-xs font-mono font-medium cursor-pointer"
+            className="flex items-center space-x-1 sm:space-x-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-[#3a494b]/50 text-slate-700 dark:text-[#b9cacb] hover:text-slate-900 dark:hover:text-[#e0fdff] hover:border-[#00f2fe]/60 bg-slate-50 dark:bg-[#1c1f2a]/60 transition-colors text-[11px] sm:text-xs font-mono font-medium cursor-pointer"
           >
             <Globe className="w-3.5 h-3.5 text-[#008ba3] dark:text-[#00f2fe]" />
             <span className={language === "en" ? "font-bold text-[#008ba3] dark:text-[#00f2fe]" : "opacity-60"}>
@@ -118,7 +118,7 @@ export function TopNav() {
             onClick={toggleTheme}
             title={t.nav.toggleTheme}
             aria-label={t.nav.toggleTheme}
-            className="p-1.5 rounded-lg border border-slate-300 dark:border-[#3a494b]/50 text-slate-700 dark:text-[#b9cacb] hover:text-slate-900 dark:hover:text-[#e0fdff] hover:border-[#00f2fe]/60 bg-slate-50 dark:bg-[#1c1f2a]/60 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-lg border border-slate-300 dark:border-[#3a494b]/50 text-slate-700 dark:text-[#b9cacb] hover:text-slate-900 dark:hover:text-[#e0fdff] hover:border-[#00f2fe]/60 bg-slate-50 dark:bg-[#1c1f2a]/60 transition-colors cursor-pointer"
           >
             {isDark ? (
               <Sun className="w-4 h-4 text-[#eab308] hover:rotate-45 transition-transform" />
@@ -127,7 +127,7 @@ export function TopNav() {
             )}
           </button>
 
-          {/* Profile Shortcut */}
+          {/* Profile Shortcut (Desktop) */}
           <a
             href="https://github.com/TheNovaNodes/TheNovaNodes"
             target="_blank"
@@ -142,16 +142,17 @@ export function TopNav() {
           <button
             type="button"
             onClick={handleDeployClick}
-            className="bg-[#00dce6] hover:bg-[#00f2fe] text-[#00373a] px-3.5 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold flex items-center space-x-2 transition-all duration-200 shadow-[0_0_16px_rgba(0,242,254,0.35)] active:scale-[0.98] cursor-pointer"
+            className="bg-[#00dce6] hover:bg-[#00f2fe] text-[#00373a] px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold flex items-center space-x-1.5 sm:space-x-2 transition-all duration-200 shadow-[0_0_16px_rgba(0,242,254,0.35)] active:scale-[0.98] cursor-pointer shrink-0"
           >
             {copied ? (
               <>
-                <Check className="w-4 h-4 text-[#00373a]" />
-                <span>{t.nav.commandCopied}</span>
+                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00373a]" />
+                <span className="hidden sm:inline">{t.nav.commandCopied}</span>
+                <span className="sm:hidden text-[11px]">Copied</span>
               </>
             ) : (
               <>
-                <Rocket className="w-4 h-4 text-[#00373a]" />
+                <Rocket className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00373a]" />
                 <span className="hidden sm:inline">{t.nav.deployCluster}</span>
                 <span className="sm:hidden">Deploy</span>
               </>
