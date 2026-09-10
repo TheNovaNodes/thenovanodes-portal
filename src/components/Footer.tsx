@@ -1,5 +1,5 @@
 import React from "react";
-import { Network, GitBranch, Shield, Terminal } from "lucide-react";
+import { Network, GitBranch } from "lucide-react";
 
 export function Footer() {
   return (
