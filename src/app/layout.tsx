@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,13 +50,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" suppressHydrationWarning className="dark scroll-smooth">
       <body
-        className={`${geistSans.variable} ${inter.variable} ${jetbrainsMono.variable} bg-[#0a0e18] text-[#dfe2f1] antialiased min-h-screen flex flex-col relative overflow-x-hidden selection:bg-[#00f2fe] selection:text-[#0a0e18]`}
+        className={`${geistSans.variable} ${inter.variable} ${jetbrainsMono.variable} bg-[#f8fafc] dark:bg-[#0a0e18] text-[#334155] dark:text-[#dfe2f1] antialiased min-h-screen flex flex-col relative overflow-x-hidden selection:bg-[#00f2fe] selection:text-[#0a0e18] transition-colors duration-200`}
       >
-        <div className="fixed inset-0 telemetry-grid pointer-events-none z-0" />
-        <div className="fixed inset-0 cosmic-radial pointer-events-none z-0" />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange={false}
+        >
+          <LanguageProvider>
+            <div className="fixed inset-0 telemetry-grid pointer-events-none z-0" />
+            <div className="fixed inset-0 cosmic-radial pointer-events-none z-0" />
+            {children}
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
