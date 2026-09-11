@@ -8,7 +8,6 @@ import {
   Activity,
   ArrowRight,
   ExternalLink,
-  CheckCircle2,
 } from "lucide-react";
 
 interface ModuleCardProps {

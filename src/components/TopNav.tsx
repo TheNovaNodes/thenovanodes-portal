@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Network, Terminal, Rocket, GitBranch, Check } from "lucide-react";
+import { Network, Rocket, GitBranch, Check } from "lucide-react";
 
 export function TopNav() {
   const [copied, setCopied] = useState(false);
