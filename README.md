@@ -12,7 +12,7 @@ last_verified: 2026-09-10
 
 Official web portal and interactive architecture showcase for **TheNovaNodes** AI Agent Infrastructure Suite.
 
-Built on **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**, designed in collaboration with **Google Stitch AI** adhering to the [`DESIGN.md`](./DESIGN.md) specification.
+Built on **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**, designed in collaboration with **Google Stitch AI** adhering to the [`DESIGN.md`](./DESIGN.md) and [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) specifications.
 
 ---
 
@@ -26,6 +26,7 @@ Built on **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwi
   - [`fxlab-landing`](https://github.com/TheNovaNodes/fxlab-landing): Edge Gateway & Webhook Ingress.
 - **Terminal Simulator:** Quickstart CLI interaction with clipboard feedback.
 - **Strict Design System:** Cyber Cyan (`#00F2FE`), Electric Violet (`#8B5CF6`), and Deep Void (`#070913`) aesthetics codified in [`DESIGN.md`](./DESIGN.md).
+- **Architecture Blueprints:** Full topology and dataflow diagrams documented in [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md).
 
 ---
 
@@ -42,21 +43,29 @@ npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) to view the portal.
 
-### Testing
+### Testing & Quality Gate
 ```bash
+npm run lint
 npm run test
 ```
 
-### Production Build
+### Production Build & Container
 ```bash
 npm run build
 npm run start
+```
+Or run with Docker:
+```bash
+docker build -t thenovanodes-portal .
+docker run -p 3000:3000 thenovanodes-portal
 ```
 
 ---
 
 ## Security & Compliance 🛡️
 
-- Strict Content-Security and Permissions-Policy headers configured in `next.config.ts`.
+- Strict `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, and `Permissions-Policy` headers configured in `next.config.ts`.
 - Zero client-side master secrets exposure.
-- All dependencies verified and audited.
+- All dependencies verified and audited (`0 vulnerabilities`).
+- Proprietary license under TheNovaNodes Foundation (see [`LICENSE`](./LICENSE)).
+

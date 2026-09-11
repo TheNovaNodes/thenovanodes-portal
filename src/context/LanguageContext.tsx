@@ -3,7 +3,6 @@
 import React, {
   createContext,
   useContext,
-  useState,
   useSyncExternalStore,
   useCallback,
 } from "react";
@@ -18,64 +17,94 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const emptySubscribe = () => () => {};
+const LANGUAGE_KEY = "novanodes_lang";
+let memoryLanguage: Language | null = null;
+const listeners = new Set<() => void>();
 
-function getStorageItem(key: string): string | null {
-  try {
-    if (typeof window !== "undefined" && window.localStorage) {
-      return window.localStorage.getItem(key);
-    }
-  } catch {
-    // Storage access might be restricted or unavailable
-  }
-  return null;
+function emitChange() {
+  listeners.forEach((listener) => listener());
 }
 
-function setStorageItem(key: string, value: string): void {
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === LANGUAGE_KEY) {
+      callback();
+    }
+  };
+  if (typeof window !== "undefined") {
+    window.addEventListener("storage", onStorage);
+  }
+  return () => {
+    listeners.delete(callback);
+    if (typeof window !== "undefined") {
+      window.removeEventListener("storage", onStorage);
+    }
+  };
+}
+
+function getClientLanguage(): Language {
+  if (typeof window === "undefined") return "en";
+
   try {
-    if (typeof window !== "undefined" && window.localStorage) {
-      window.localStorage.setItem(key, value);
+    const stored = window.localStorage.getItem(LANGUAGE_KEY);
+    if (stored === "en" || stored === "ru") {
+      return stored;
     }
   } catch {
-    // Storage access might be restricted or unavailable
+    if (memoryLanguage) return memoryLanguage;
   }
+
+  if (memoryLanguage) return memoryLanguage;
+
+  if (
+    typeof navigator !== "undefined" &&
+    navigator.language &&
+    navigator.language.startsWith("ru")
+  ) {
+    return "ru";
+  }
+
+  return "en";
+}
+
+function getServerLanguage(): Language {
+  return "en";
+}
+
+function persistLanguage(lang: Language): void {
+  try {
+    if (typeof window !== "undefined" && window.localStorage) {
+      window.localStorage.setItem(LANGUAGE_KEY, lang);
+    }
+  } catch {
+    memoryLanguage = lang;
+  }
+  emitChange();
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const isClient = useSyncExternalStore(
-    emptySubscribe,
-    () => true,
-    () => false
+  const language = useSyncExternalStore(
+    subscribe,
+    getClientLanguage,
+    getServerLanguage
   );
 
-  const [language, setLanguageState] = useState<Language>("en");
-
-  // Read persisted preference if on client
-  const clientLanguage = isClient
-    ? (getStorageItem("novanodes_lang") as Language | null) ||
-      (typeof navigator !== "undefined" && navigator.language.startsWith("ru")
-        ? "ru"
-        : "en")
-    : "en";
-
-  const activeLanguage: Language = language || clientLanguage;
-
   const setLanguage = useCallback((lang: Language) => {
-    setLanguageState(lang);
-    setStorageItem("novanodes_lang", lang);
+    persistLanguage(lang);
   }, []);
 
   const toggleLanguage = useCallback(() => {
-    const next = activeLanguage === "en" ? "ru" : "en";
-    setLanguage(next);
-  }, [activeLanguage, setLanguage]);
+    const next = language === "en" ? "ru" : "en";
+    persistLanguage(next);
+  }, [language]);
 
-  const t = translations[activeLanguage];
+  const t = translations[language];
 
   return (
     <LanguageContext.Provider
       value={{
-        language: activeLanguage,
+        language,
         setLanguage,
         toggleLanguage,
         t,
