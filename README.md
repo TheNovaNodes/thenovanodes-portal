@@ -10,6 +10,11 @@ last_verified: 2026-09-10
 
 # TheNovaNodes Portal 🌌
 
+[![CI](https://github.com/TheNovaNodes/thenovanodes-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/TheNovaNodes/thenovanodes-portal/actions/workflows/ci.yml)
+![Node Version](https://img.shields.io/badge/Node.js-%3E%3D20-brightgreen.svg)
+![Next.js Version](https://img.shields.io/badge/Next.js-16-blue.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Official web portal and interactive architecture showcase for **TheNovaNodes** AI Agent Infrastructure Suite.
 
 Built on **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwind CSS v4**, designed in collaboration with **Google Stitch AI** adhering to the [`DESIGN.md`](./DESIGN.md) and [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) specifications.
@@ -40,6 +45,7 @@ Built on **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwi
 ```bash
 npm install
 npm run dev
+npm run build
 ```
 Open [http://localhost:3000](http://localhost:3000) to view the portal.
 
@@ -67,5 +73,5 @@ docker run -p 3000:3000 thenovanodes-portal
 - Strict `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, and `Permissions-Policy` headers configured in `next.config.ts`.
 - Zero client-side master secrets exposure.
 - All dependencies verified and audited (`0 vulnerabilities`).
-- Proprietary license under TheNovaNodes Foundation (see [`LICENSE`](./LICENSE)).
+- Licensed under the MIT License (see [`LICENSE`](./LICENSE)).
 
