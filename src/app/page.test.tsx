@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import Home from "./page";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/providers/ThemeProvider";
@@ -13,6 +13,14 @@ function renderWithProviders(ui: React.ReactElement) {
 }
 
 describe("TheNovaNodes Portal", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  afterEach(() => {
+    localStorage.clear();
+  });
+
   it("renders main headline and branding in default English", () => {
     renderWithProviders(<Home />);
     expect(screen.getAllByText(/TheNovaNodes/i)[0]).toBeInTheDocument();
@@ -58,6 +66,17 @@ describe("TheNovaNodes Portal", () => {
     expect(screen.getByText(/Core Infrastructure Repositories/i)).toBeInTheDocument();
   });
 
+  it("persists and restores language preference from localStorage", () => {
+    localStorage.setItem("novanodes_lang", "ru");
+    renderWithProviders(<Home />);
+    expect(
+      screen.getByText(/Ключевые Репозитории Инфраструктуры/i)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Модульная Архитектура AI-Агентов/i)
+    ).toBeInTheDocument();
+  });
+
   it("renders theme toggle button and handles click", () => {
     renderWithProviders(<Home />);
     const themeBtn = screen.getByTitle(/toggle theme/i);
@@ -65,3 +84,4 @@ describe("TheNovaNodes Portal", () => {
     fireEvent.click(themeBtn);
   });
 });
+
