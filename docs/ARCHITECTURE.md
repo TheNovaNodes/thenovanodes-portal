@@ -20,10 +20,10 @@ graph TD
     Edge -->|HTTP/2 Proxy :3000| NextServer["🚀 Next.js 16 Production Runtime (Node.js 22 / Turbopack)"]
     
     subgraph Core Mesh Ecosystem
+        NextServer -.->|Showcase Link| AntigravityAgent["Pure Go Swarm Engine (antigravity-telegram-agent)"]
         NextServer -.->|Showcase Link| MCPRouter["Dynamic Protocol Gateway (mcp-router :8090)"]
         NextServer -.->|Showcase Link| AgentVault["ZK Credential Enclave (agent-vault :8086)"]
-        NextServer -.->|Showcase Link| GoogleJules["Autonomous Swarm Consensus (google-jules-mcp)"]
-        NextServer -.->|Showcase Link| FxLabLanding["Edge Gateway & Telemetry Ingress (fxlab-landing :3000)"]
+        NextServer -.->|Showcase Link| GoogleJules["Asynchronous Jules Worker (google-jules-mcp)"]
     end
 
     subgraph Autonomous Bot Administration
@@ -55,10 +55,10 @@ graph TD
     MainContent --> Modules["components/ModuleGrid.tsx (Client)"]
     MainContent --> Architecture["components/ArchitectureSection.tsx (Client)"]
     
+    Modules --> AgentCard["antigravity-telegram-agent Card"]
     Modules --> MCPCard["mcp-router Card"]
     Modules --> VaultCard["agent-vault Card"]
     Modules --> JulesCard["google-jules-mcp Card"]
-    Modules --> FxLabCard["fxlab-landing Card"]
     
     Architecture --> TabRouting["01. Multiplexed Routing Tab"]
     Architecture --> TabSecurity["02. Enclave Security Tab"]

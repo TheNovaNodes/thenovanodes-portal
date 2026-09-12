@@ -34,7 +34,7 @@ describe("TheNovaNodes Portal", () => {
     expect(screen.getAllByText("mcp-router")[0]).toBeInTheDocument();
     expect(screen.getAllByText("agent-vault")[0]).toBeInTheDocument();
     expect(screen.getAllByText("google-jules-mcp")[0]).toBeInTheDocument();
-    expect(screen.getAllByText("fxlab-landing")[0]).toBeInTheDocument();
+    expect(screen.getAllByText("antigravity-telegram-agent")[0]).toBeInTheDocument();
   });
 
   it("renders architecture section and quickstart CLI command", () => {
