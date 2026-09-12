@@ -5,7 +5,7 @@ protocol: HTTP / Next.js
 primary_capability: Official Web Portal & Showcase for TheNovaNodes AI Agent Infrastructure
 requires: Node.js >= 20
 works_with: Next.js 16, React 19, Tailwind CSS v4, Framer Motion, Model Context Protocol
-last_verified: 2026-09-10
+last_verified: 2026-09-12
 ---
 
 # TheNovaNodes Portal 🌌
@@ -25,10 +25,10 @@ Built on **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Tailwi
 
 - **Real-Time Cluster Observability:** Live pulse status indicators for cluster health and node availability.
 - **Interactive MCP Matrix:** Direct exploration of core repositories:
+  - [`antigravity-telegram-agent`](https://github.com/TheNovaNodes/antigravity-telegram-agent): Autonomous Pure Go Swarm Engine with PTY Streaming.
   - [`mcp-router`](https://github.com/TheNovaNodes/mcp-router): Dynamic Protocol Gateway with sub-5ms latency.
   - [`agent-vault`](https://github.com/TheNovaNodes/agent-vault): Zero-Knowledge Credential Enclave.
-  - [`google-jules-mcp`](https://github.com/TheNovaNodes/google-jules-mcp): Autonomous Consensus & Jules Swarm Mesh.
-  - [`fxlab-landing`](https://github.com/TheNovaNodes/fxlab-landing): Edge Gateway & Webhook Ingress.
+  - [`google-jules-mcp`](https://github.com/TheNovaNodes/google-jules-mcp): Asynchronous Task Execution & Jules Worker Mesh.
 - **Terminal Simulator:** Quickstart CLI interaction with clipboard feedback.
 - **Strict Design System:** Cyber Cyan (`#00F2FE`), Electric Violet (`#8B5CF6`), and Deep Void (`#070913`) aesthetics codified in [`DESIGN.md`](./DESIGN.md).
 - **Architecture Blueprints:** Full topology and dataflow diagrams documented in [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md).

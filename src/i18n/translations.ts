@@ -58,7 +58,7 @@ export interface TranslationSchema {
         terminalMetric: string;
         payload: string;
       };
-      fxlabLanding: {
+      antigravityTelegramAgent: {
         category: string;
         badge: string;
         description: string;
@@ -159,14 +159,14 @@ export const translations: Record<Language, TranslationSchema> = {
           terminalMetric: "9/9 Nodes Synced",
           payload: "> delegation: jules_workspace_task: #9941 dispatched",
         },
-        fxlabLanding: {
-          category: "EDGE GATEWAY & WEBHOOK INGRESS",
-          badge: "fxlab-ingress:edge",
+        antigravityTelegramAgent: {
+          category: "AUTONOMOUS GO SWARM ENGINE & TELEGRAM PTY",
+          badge: "swarm-engine:go",
           description:
-            "Ultra-fast ingress proxy with dynamic edge rate-limiting, live bidirectional WebSocket telemetry pipelines, and unified admin observability for cluster operators.",
-          terminalHeader: "INGRESS_PIPELINE :: REALTIME",
-          terminalMetric: "64,210 req/sec",
-          payload: "> 200 OK /api/v1/swarm/telemetry (0.4ms latency)",
+            "High-performance, deadlock-immune Pure Go multi-agent swarm engine for Antigravity Telegram Bots. Features 1200ms streaming throttler, Inactivity Turn Watchdog, Buffer Salvage, and 429 Cold Safe Parking.",
+          terminalHeader: "SWARM_ENGINE :: GO_RUNTIME",
+          terminalMetric: "0% Deadlock / 1200ms PTY",
+          payload: "> 200 OK /antigravity/stream (PTY throttled: 1200ms, watchdog: arm)",
         },
       },
     },
@@ -316,14 +316,14 @@ export const translations: Record<Language, TranslationSchema> = {
           terminalMetric: "9/9 Нод синхронизировано",
           payload: "> delegation: задача_воркспейса_jules: #9941 отправлена",
         },
-        fxlabLanding: {
-          category: "EDGE-ШЛЮЗ И ВХОДНОЙ ТРАФИК WEBHOOK",
-          badge: "fxlab-ingress:edge",
+        antigravityTelegramAgent: {
+          category: "АВТОНОМНЫЙ GO SWARM-ДВИЖОК И PTY TELEGRAM",
+          badge: "swarm-engine:go",
           description:
-            "Сверхбыстрый ingress-прокси с динамическим rate-limiting на edge, двусторонними WebSocket-пайплайнами телеметрии и панелью мониторинга операторов кластера.",
-          terminalHeader: "INGRESS_ПАЙПЛАЙН :: REALTIME",
-          terminalMetric: "64 210 req/sec",
-          payload: "> 200 OK /api/v1/swarm/telemetry (0.4мс задержка)",
+            "Высокопроизводительный, защищённый от дедлоков Pure Go мультиагентный движок для Telegram-ботов Antigravity. Оснащён 1200мс стриминг-троттлером, сторожевым таймером неактивности и буферным спасением сообщений.",
+          terminalHeader: "SWARM_ENGINE :: РАНТАЙМ_GO",
+          terminalMetric: "0% Дедлоков / 1200мс PTY",
+          payload: "> 200 OK /antigravity/stream (PTY троттлинг: 1200мс, watchdog: active)",
         },
       },
     },
