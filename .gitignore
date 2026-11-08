@@ -15,6 +15,7 @@ out/
 
 # production
 build
+.deploy_rollback_capsule/
 
 # misc
 .DS_Store
