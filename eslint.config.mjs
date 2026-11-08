@@ -9,6 +9,7 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    ".deploy_rollback_capsule/**",
     "next-env.d.ts",
     "vitest.config.mts",
     "vitest.setup.ts",

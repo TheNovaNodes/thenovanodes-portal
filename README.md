@@ -66,6 +66,24 @@ docker build -t thenovanodes-portal .
 docker run -p 3000:3000 thenovanodes-portal
 ```
 
+### 🚀 Production Deployment (5-Echelon Automated Gate)
+In accordance with TheNovaNodes ecosystem standards, production deployment is orchestrated via `./scripts/deploy.sh`:
+
+```bash
+# Execute standard 5-echelon deployment
+./scripts/deploy.sh
+
+# Dry-run validation (build and test without replacing production artifacts)
+./scripts/deploy.sh --dry-run
+```
+
+**Deployment Echelons:**
+1. **🛡️ Échelon 0: Pre-Flight Guard & Rollback Capsule:** Toolchain checks, resolves `TARGET_COMMIT`, generates runtime version manifest, and archives `.next/` into `.deploy_rollback_capsule/`.
+2. **🧱 Échelon 1: Production Isolation Probe:** Executes test suite (`npm test`), linter (`npm run lint`), and ensures git working tree cleanliness.
+3. **🔄 Échelon 2: Atomic Switch & Graceful Shift:** Compiles optimized production bundle with `NEXT_PUBLIC_COMMIT_SHA`. Restarts service if managed by systemd.
+4. **🪞 Échelon 3: Identity & Truth Probe:** Verifies runtime manifest `commit` matches `git rev-parse HEAD`.
+5. **🔍 Échelon 4: Deep Smoke Probe & Rollback Gate:** Checks `BUILD_ID` and tests `/api/health` route. Automatic instant rollback (`trap rollback ERR EXIT`) on any anomaly.
+
 ---
 
 ## Security & Compliance 🛡️
